@@ -1,2 +1,2 @@
 ## +Rover
-Your business on the move!
+Your brand on the move!
