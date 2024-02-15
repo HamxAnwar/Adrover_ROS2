@@ -1,0 +1,329 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <xacro:include filename="inertial_macros.xacro" />
+
+    <material name="white">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+    </material>
+
+    <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+    </material>
+
+    <material name="green">
+        <color rgba="0.0 1.0 0.3 1.0"/>
+    </material>
+
+    <material name="blue">
+        <color rgba="0.0 0.0 1.0 1.0"/>
+    </material>
+
+    <material name="red">
+        <color rgba="1.0 0.0 0.3 1.0"/>
+    </material>
+
+    <!-- Base link -->
+
+    <link name="base_link"/>
+
+    <!-- Chassis left -->
+
+    <joint name="chassis_joint_left" type="fixed">
+        <parent link="base_link"/>
+        <child link="chassis_link_left"/>
+        <origin xyz="0 0.2925 0.0" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <link name="chassis_link_left">
+        <visual>
+            <origin xyz="0.3125 0.0 0.154" />
+            <geometry>
+                <box size="0.625 0.1623 0.29"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0.3125 0.0 0.154" />
+            <geometry>
+                <box size="0.625 0.1623 0.29"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.5" x="0.625" y="0.1623" z="0.29">
+            <origin xyz="0.3125 0.0 0.154" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <!-- Chassis right -->
+
+    <joint name="chassis_joint_right" type="fixed">
+        <parent link="base_link"/>
+        <child link="chassis_link_right"/>
+        <origin xyz="0 -0.2925 0.0" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <link name="chassis_link_right">
+        <visual>
+            <origin xyz="0.3125 0.0 0.154" />
+            <geometry>
+                <box size="0.625 0.1623 0.29"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0.3125 0.0 0.154" />
+            <geometry>
+                <box size="0.625 0.1623 0.29"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.5" x="0.625" y="0.1623" z="0.29">
+            <origin xyz="0.3125 0.0 0.154" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <!-- Chassis front -->
+
+    <joint name="chassis_joint_front" type="fixed">
+        <parent link="base_link"/>
+        <child link="chassis_link_front"/>
+        <origin xyz="0.56 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <link name="chassis_link_front">
+        <visual>
+            <origin xyz="0 0.0 0.154" />
+            <geometry>
+                <box size="0.125 0.585 0.29"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0.0 0.154" />
+            <geometry>
+                <box size="0.125 0.585 0.29"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.5" x="0.625" y="0.1623" z="0.29">
+            <origin xyz="0 0.0 0.154" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <!-- Chassis back -->
+
+    <joint name="chassis_joint_back" type="fixed">
+        <parent link="base_link"/>
+        <child link="chassis_link_back"/>
+        <origin xyz="0.0625 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <link name="chassis_link_back">
+        <visual>
+            <origin xyz="0 0.0 0.154" />
+            <geometry>
+                <box size="0.125 0.585 0.29"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0.0 0.154" />
+            <geometry>
+                <box size="0.125 0.585 0.29"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.5" x="0.625" y="0.1623" z="0.29">
+            <origin xyz="0 0.0 0.154" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_box>
+    </link> 
+
+    <!-- Left Wheel -->
+
+    <joint name="left_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_wheel_link"/>
+        <axis xyz="0 0 1"/>
+        <origin xyz="0.3125 0.1625 0" rpy="-1.5708 0 0"/>
+    </joint>
+
+    <link name="left_wheel_link">
+        <visual name="">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.06" length="0.035"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.06" length="0.035"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="0.1" radius="0.06" length="0.035">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <!-- Right wheel -->
+
+    <joint name="right_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_wheel_link"/>
+        <axis xyz="0 0 -1"/>
+        <origin xyz="0.3125 -0.1625 0" rpy="1.5708 0 0"/>
+    </joint>
+
+    <link name="right_wheel_link">
+        <visual name="">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.06" length="0.035"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.06" length="0.035"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="0.1" radius="0.06" length="0.035">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <!-- Caster wheel left front -->
+
+    <joint name="caster_wheel_joint_lf" type="fixed">
+        <parent link="chassis_link_left"/>
+        <child link="caster_wheel_link_lf"/>
+        <origin xyz="0.565 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="caster_wheel_link_lf">
+        <visual name="">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <sphere radius="0.06"/>
+            </geometry>
+            <material name="green"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <sphere radius="0.06"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_sphere mass="0.1" radius="0.06">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_sphere>
+    </link>
+
+    <!-- Caster wheel right front -->
+
+    <joint name="caster_wheel_joint_rf" type="fixed">
+        <parent link="chassis_link_right"/>
+        <child link="caster_wheel_link_rf"/>
+        <origin xyz="0.565 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="caster_wheel_link_rf">
+        <visual name="">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <sphere radius="0.06"/>
+            </geometry>
+            <material name="green"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <sphere radius="0.06"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_sphere mass="0.1" radius="0.06">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_sphere>
+    </link>
+
+    <!-- Caster wheel left back -->
+
+    <joint name="caster_wheel_joint_lb" type="fixed">
+        <parent link="chassis_link_left"/>
+        <child link="caster_wheel_link_lb"/>
+        <origin xyz="0.07 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="caster_wheel_link_lb">
+        <visual name="">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <sphere radius="0.06"/>
+            </geometry>
+            <material name="green"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <sphere radius="0.06"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_sphere mass="0.1" radius="0.06">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_sphere>
+    </link>
+
+    <!-- Caster wheel right back -->
+
+    <joint name="caster_wheel_joint_rb" type="fixed">
+        <parent link="chassis_link_right"/>
+        <child link="caster_wheel_link_rb"/>
+        <origin xyz="0.07 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="caster_wheel_link_rb">
+        <visual name="">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <sphere radius="0.06"/>
+            </geometry>
+            <material name="green"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <sphere radius="0.06"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_sphere mass="0.1" radius="0.06">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_sphere>
+    </link>
+
+    <!-- LCD -->
+
+    <joint name="lcd_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.36" rpy="0.0 0.0 0.0"/>
+        <parent link="chassis_link_front"/>
+        <child link="lcd_link"/>
+    </joint>
+
+    <link name="lcd_link">
+        <visual name="">
+            <origin xyz="-0.15 0.0 0.43" rpy="0.0 -0.35 0.0"/>
+            <geometry>
+                <box size="0.06 0.43 0.86"/>
+            </geometry>
+            <material name="blue" />
+        </visual>
+        <collision>
+            <origin xyz="-0.15 0.0 0.43" rpy="0.0 -0.35 0.0"/>
+            <geometry>
+                <box size="0.06 0.43 0.86"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.5" x="0.06" y="0.43" z="0.86">
+            <origin xyz="-0.15 0.0 0.43" rpy="0.0 -0.35 0.0"/>
+        </xacro:inertial_box>
+    </link>
+
+</robot>
