@@ -157,7 +157,7 @@
     </joint>
 
     <link name="left_wheel_link">
-        <visual name="">
+        <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
                 <cylinder radius="0.06" length="0.035"/>
@@ -165,9 +165,8 @@
             <material name="red"/>
         </visual>
         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <cylinder radius="0.06" length="0.035"/>
+                <sphere radius="0.6"/>
             </geometry>
         </collision>
         <xacro:inertial_cylinder mass="0.1" radius="0.06" length="0.035">
@@ -188,7 +187,7 @@
     </joint>
 
     <link name="right_wheel_link">
-        <visual name="">
+        <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
                 <cylinder radius="0.06" length="0.035"/>
@@ -196,9 +195,8 @@
             <material name="red"/>
         </visual>
         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <cylinder radius="0.06" length="0.035"/>
+                <sphere radius="0.6"/>
             </geometry>
         </collision>
         <xacro:inertial_cylinder mass="0.1" radius="0.06" length="0.035">
