@@ -11,8 +11,11 @@ controller_manager:
   
 diff_cont:
   ros__parameters:
+
     publish_rate: 50.0
+
     base_frame_id: base_link
+
     left_wheel_names: ['left_wheel_joint']
     right_wheel_names: ['right_wheel_joint']
     wheel_separation: 0.325
@@ -22,15 +25,14 @@ diff_cont:
 
     # open_loop: false
 
-    # wheels_per_side: x
-    # wheel_seperation_multiplier: x
-    # left_wheel_radius_multiplier: x
-    # right_wheel_radius_multiplier: x
+    # wheels_per_side: 1
+    # wheel_seperation_multiplier: 1
+    # left_wheel_radius_multiplier: 1
+    # right_wheel_radius_multiplier: 1
 
     # odom_frame_id: odom
     # pose_covariance_diagonal: x
     # twist_covariance_diagonal: x
-    # open_loop: x
     # enable_odom_tf: true
 
     # cmd_vel_timeout: x
@@ -57,5 +59,5 @@ diff_cont:
     # angular.z.max_jerk: NaN
     # angular.z.min_jerk: NaN
 
-    # joint_broad:
-    #   ros__parameters:
+# joint_broad:
+#   ros__parameters:

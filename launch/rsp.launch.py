@@ -7,7 +7,7 @@ from launch.substitutions import LaunchConfiguration, Command
 from launch.actions import DeclareLaunchArgument
 from launch_ros.actions import Node
 
-# import xacro
+import xacro
 
 
 def generate_launch_description():
@@ -38,7 +38,6 @@ def generate_launch_description():
             'use_sim_time',
             default_value='false',
             description='Use sim time if true'),
-
         DeclareLaunchArgument(
             'use_ros2_control',
             default_value='true',

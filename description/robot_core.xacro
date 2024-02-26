@@ -361,7 +361,40 @@
             <origin xyz="-0.15 0.0 0.43" rpy="0.0 -0.35 0.0"/>
         </xacro:inertial_box>
     </link>
+
     <gazebo reference="lcd_link">
         <material>Gazebo/Blue</material>
     </gazebo>
+
+    <!-- LCD Support -->
+
+    <joint name="lcd_support_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.36" rpy="0.0 0.0 0.0"/>
+        <parent link="chassis_link_back"/>
+        <child link="lcd_support_link"/>
+    </joint>
+
+    <link name="lcd_support_link">
+        <visual name="">
+            <origin xyz="0.15 0.0 0.43" rpy="0.0 -2.79 0.0"/>
+            <geometry>
+                <box size="0.06 0.43 0.86"/>
+            </geometry>
+            <material name="blue" />
+        </visual>
+        <collision>
+            <origin xyz="0.15 0.0 0.43" rpy="0.0 -2.79 0.0"/>
+            <geometry>
+                <box size="0.06 0.43 0.86"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.5" x="0.06" y="0.43" z="0.86">
+            <origin xyz="0.15 0.0 0.43" rpy="0.0 -2.79 0.0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <gazebo reference="lcd_support_link">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
 </robot>
