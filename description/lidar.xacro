@@ -15,23 +15,14 @@
             </geometry>
             <material name="white"/>
         </visual>
-        <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <cylinder radius="0.06" length="0.035"/>
-            </geometry>
-        </collision>
-        <xacro:inertial_cylinder mass="0.1" radius="0.06" length="0.035">
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-        </xacro:inertial_cylinder>
     </link>
 
     <gazebo reference="laser_frame">
         <material>Gazebo/White</material>
         <sensor name="laser" type="ray">
             <pose> 0 0 0 0 0 0 </pose>
-            <visualize>false</visualize>
-            <update_rate>10</update_rate>
+            <visualize>true</visualize>
+            <update_rate>100</update_rate>
             <ray>
                 <scan>
                     <horizontal>
@@ -42,9 +33,9 @@
                     </horizontal>
                 </scan>
                 <range>
-                    <min>0.3</min>
+                    <min>0.15</min>
                     <max>12</max>
-                    <resolution>0.01</resolution>
+                    <resolution>0.001</resolution>
                 </range>
             </ray>
             <plugin name="laser_controller" filename="libgazebo_ros_ray_sensor.so">
