@@ -154,6 +154,7 @@
         <child link="left_wheel_link"/>
         <axis xyz="0 0 1"/>
         <origin xyz="0.3125 0.1625 0" rpy="-1.5708 0 0"/>
+        <hardwareInterface>  <velocity>  <param name="min">-10.0</param>  <param name="max">10.0</param>  </velocity> </hardwareInterface>
     </joint>
 
     <link name="left_wheel_link">
@@ -184,6 +185,7 @@
         <child link="right_wheel_link"/>
         <axis xyz="0 0 -1"/>
         <origin xyz="0.3125 -0.1625 0" rpy="1.5708 0 0"/>
+        <hardwareInterface>  <velocity>  <param name="min">-10.0</param>  <param name="max">10.0</param>  </velocity> </hardwareInterface>
     </joint>
 
     <link name="right_wheel_link">

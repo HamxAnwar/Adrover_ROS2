@@ -19,21 +19,27 @@ def generate_launch_description():
         )]), launch_arguments={'use_sim_time': 'false', 'use_ros2_control': 'true'}.items()
     )
 
+#    robot_description_1 = {"robot_description": robot_description_content}
 
     robot_description = Command(['ros2 param get --hide-type /robot_state_publisher robot_description'])
-    controller_params_file = os.path.join(get_package_share_directory(package_name), 'config', 'adrover_controller.yaml')
+    controller_params = os.path.join(
+        get_package_share_directory('adrover_ROS2'), # <-- Replace with your package name
+        'config',
+        'adrover_controller.yaml'
+        )
 
     controller_manager = Node(
-        package="controller_manager",
-        executable="ros2_control_node",
-        parameters=[controller_params_file]
-    )
+        package='controller_manager',
+        executable='ros2_control_node',
+        parameters=[{'robot_description': robot_description},
+                controller_params],
+        )
 
     delayed_controller_manager = TimerAction(period=3.0, actions=[controller_manager])
 
     diff_drive_spawner = Node(
         package="controller_manager",
-        executable="spawner",
+        executable="spawner.py",
         arguments=["diff_cont"],
     )
 
@@ -46,7 +52,7 @@ def generate_launch_description():
 
     joint_broad_spawner = Node(
         package="controller_manager",
-        executable="spawner",
+        executable="spawner.py",
         arguments=["joint_broad"],
     )
 
@@ -61,7 +67,7 @@ def generate_launch_description():
         rsp,
         delayed_controller_manager,
         delayed_diff_drive_spawner,
+        delayed_joint_broad_spawner
 #        diff_drive_spawner,
-        delayed_joint_broad_spawner,
 #        joint_broad_spawner,
     ])

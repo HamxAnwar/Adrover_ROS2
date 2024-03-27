@@ -53,11 +53,10 @@ def generate_launch_description():
             default_value=scan_mode,
             description='Specifying scan mode of lidar'),
 
-
         Node(
+            node_name='rplidar_composition',
             package='rplidar_ros',
-            executable='rplidar_node',
-            name='rplidar_node',
+            node_executable='rplidar_composition',
             parameters=[{'channel_type':channel_type,
                          'serial_port': serial_port,
                          'serial_baudrate': serial_baudrate,
